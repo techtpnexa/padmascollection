@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-muted-rose;
+  }
+  
+  body {
+    @apply bg-soft-pink text-deep-mauve font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-muted-rose text-neutral-white px-8 py-3 font-medium transition-all duration-200 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-warm-pink focus:ring-offset-2 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-neutral-white text-deep-mauve border-2 border-muted-rose px-8 py-3 font-medium transition-all duration-200 hover:bg-light-blush focus:outline-none focus:ring-2 focus:ring-warm-pink focus:ring-offset-2 shadow-sm hover:shadow-md;
+  }
+  
+  .product-card {
+    @apply cursor-pointer transition-all duration-300 hover:shadow-xl;
+  }
+  
+  .product-image {
+    @apply w-full h-full object-cover transition-transform duration-300 group-hover:scale-105;
+  }
+  
+  .premium-card {
+    @apply bg-neutral-white border-2 border-muted-rose shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .premium-section {
+    @apply bg-light-blush border-t-4 border-muted-rose;
+  }
+}
