@@ -25,11 +25,23 @@ jobs:
       - name: Build project
         run: cd apps/web && npm run build
         
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN_PC }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.PROJECT_ID }}
-          vercel-args: '--prod'
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+        
+      - name: Deploy to Vercel (Preview)
+        if: github.event_name == 'pull_request'
+        env:
+          VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        run: |
+          cd apps/web
+          vercel --token=${{ secrets.VERCEL_TOKEN_PC }} --yes
+          
+      - name: Deploy to Vercel (Production)
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        env:
+          VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        run: |
+          cd apps/web
+          vercel --prod --token=${{ secrets.VERCEL_TOKEN_PC }} --yes
