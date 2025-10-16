@@ -17,7 +17,7 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
 
-  // ✅ Next.js Image Optimization
+  // ✅ Next.js Image Optimization - Enhanced
   images: {
     remotePatterns: [
       {
@@ -29,16 +29,17 @@ const nextConfig = {
         hostname: "**",
       },
     ],
-    formats: ["image/webp", "image/avif"],
+    formats: ["image/avif", "image/webp"], // AVIF first for better compression
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 31536000, // Cache for 1 year
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    unoptimized: false, // keep true only if you want to bypass Next.js optimization
+    unoptimized: false,
+    loader: 'default',
   },
 
-  // ✅ Performance headers for static assets
+  // ✅ Performance headers for static assets and images
   async headers() {
     return [
       {
@@ -51,7 +52,16 @@ const nextConfig = {
         ],
       },
       {
-        source: "/img/:path*",
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/_next/image",
         headers: [
           {
             key: "Cache-Control",

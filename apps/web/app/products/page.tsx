@@ -1,5 +1,5 @@
-'use client';
 
+'use client';
 import { useState, useMemo } from 'react';
 import { Filter, SlidersHorizontal } from 'lucide-react';
 import { ProductGrid } from '@/components/product/ProductGrid';

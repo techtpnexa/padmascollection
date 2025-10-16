@@ -2,12 +2,13 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { products, categories } from '@/data/products';
 import { ArrowDown } from 'lucide-react';
-
+import TrustedBrands from '@/components/ui/TrustedBrands';
+import { HeroImage, CategoryImage } from '@/components/ui/OptimizedImage';
+import { useRouter } from 'next/navigation';
 
 
 export default function HomePage() {
@@ -45,12 +46,11 @@ export default function HomePage() {
       <section id="home" className="relative h-screen flex items-center justify-center bg-gradient-to-br from-soft-pink via-light-blush to-warm-pink overflow-hidden">
         <div className="absolute inset-0">
           {/* 3D Fashion Image - Using a high-quality 3D render of elegant dress */}
-          <Image
+          <HeroImage
             src="/images/banner_img.jpg"
             alt="Padmas Collection - Elegant Women's Fashion"
             fill
             className="object-cover"
-            priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-deep-mauve/40 via-muted-rose/30 to-warm-pink/40" />
           
@@ -69,9 +69,9 @@ export default function HomePage() {
           </div>
           
           <h1 className="text-6xl md:text-8xl font-serif font-light mb-6 drop-shadow-2xl">
-            Elegance
+            PADMA'S
             <br />
-            <span className="font-bold text-neutral-white">Redefined</span>
+            <span className="font-bold text-neutral-white">COLLECTION</span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-10 font-light max-w-2xl mx-auto drop-shadow-lg">
@@ -87,10 +87,10 @@ export default function HomePage() {
               Explore Collection
             </button>
             <button 
-              onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => window.location.href = '/our-journey'}
               className="border-2 border-neutral-white text-neutral-white px-10 py-4 font-semibold text-lg hover:bg-neutral-white hover:text-deep-mauve transition-all duration-300 shadow-xl backdrop-blur-sm"
             >
-              Shop by Category
+              View Our Journey
             </button>
           </div>
           
@@ -128,11 +128,12 @@ export default function HomePage() {
                   onClick={() => document.getElementById(category.slug)?.scrollIntoView({ behavior: 'smooth' })}
                   className="group relative overflow-hidden bg-warm-pink aspect-[4/5] border-4 border-muted-rose shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
                 >
-                  <Image
+                  <CategoryImage
                     src={categoryImages[index]}
                     alt={category.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="transition-transform duration-500 group-hover:scale-110"
+                    aspectRatio="4/5"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-mauve/80 via-deep-mauve/40 to-transparent group-hover:from-deep-mauve/90 transition-all duration-300" />
                   <div className="absolute bottom-8 left-8 text-white">
@@ -165,7 +166,7 @@ export default function HomePage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-deep-mauve via-muted-rose to-deep-mauve blur-lg opacity-50" />
                 <span className="relative bg-gradient-to-r from-deep-mauve to-muted-rose text-neutral-white px-8 py-3 text-xs font-bold tracking-[0.3em] inline-block shadow-xl border-2 border-neutral-white/30">
-                  PADMA'S CHOICE
+                  PADMA'S PICK
                 </span>
               </div>
             </div>
@@ -185,9 +186,9 @@ export default function HomePage() {
             
             {/* Subtitle with Enhanced Typography */}
             <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto font-light leading-relaxed">
-              Handpicked pieces that embody our commitment to{' '}
-              <span className="font-semibold text-deep-mauve">elegance</span> and{' '}
-              <span className="font-semibold text-deep-mauve">quality</span>.
+            Curated selections that highlight our promise of {' '}
+              <span className="font-semibold text-deep-mauve">sophistication</span> and{' '}
+              <span className="font-semibold text-deep-mauve">excellence</span>.
             </p>
 
             {/* Additional Decorative Element */}
@@ -230,7 +231,7 @@ export default function HomePage() {
                 {item.category.name} Collection
               </h2>
               <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-                Discover our exquisite selection of {item.category.name.toLowerCase()} designed for the modern woman.
+                {item.category.title}
               </p>
             </div>
             
@@ -239,27 +240,7 @@ export default function HomePage() {
         </section>
       ))}
 
-      {/* New Arrivals */}
-      {/* {newProducts.length > 0 && (
-        <section id="new-arrivals" className="py-24 bg-primary-100 border-t-4 border-muted-rose scroll-mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-20">
-              <span className="bg-muted-rose text-neutral-white px-4 py-1 text-xs font-bold tracking-widest mb-4 inline-block">
-                JUST ARRIVED
-              </span>
-              <h2 className="text-5xl font-serif font-bold text-deep-mauve mb-6">
-                New Arrivals
-              </h2>
-              <p className="text-xl text-text-secondary">
-                The latest additions to our curated collection.
-              </p>
-            </div>
-            
-            <ProductGrid products={newProducts} />
-          </div>
-        </section>
-      )} */}
-
+      <TrustedBrands />
     </div>
   );
 }

@@ -15,6 +15,7 @@ export interface ProductCategory {
   id: string;
   name: string;
   slug: string;
+  title: string;
 }
 
 export interface Size {

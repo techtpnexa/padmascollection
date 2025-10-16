@@ -1,14 +1,13 @@
 'use client';
-
 import { useState } from 'react';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeft, Heart, Share2, Minus, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { products } from '@/data/products';
 import { Size, Color } from '@/types';
+import { ProductImage, ThumbnailImage } from '@/components/ui/OptimizedImage';
 
 interface ProductPageProps {
   params: {
@@ -93,12 +92,14 @@ export default function ProductPage({ params }: ProductPageProps) {
           {/* Product Images */}
           <div className="space-y-4">
             <div className="relative aspect-[4/5] bg-primary-200 border border-primary-500 overflow-hidden shadow-md">
-              <Image
+              <ProductImage
                 src={product.images[selectedImage]}
                 alt={product.name}
                 fill
-                className="object-cover"
                 priority
+                aspectRatio="4/5"
+                fadeIn={true}
+                showSkeleton={true}
               />
               {product.new && (
                 <div className="absolute top-4 left-4 bg-primary-600 text-white px-3 py-1 text-sm font-medium">
@@ -118,11 +119,12 @@ export default function ProductPage({ params }: ProductPageProps) {
                       selectedImage === index ? 'border-2 border-primary-600' : 'border-primary-500'
                     }`}
                   >
-                    <Image
+                    <ThumbnailImage
                       src={image}
                       alt={`${product.name} ${index + 1}`}
                       fill
-                      className="object-cover"
+                      fadeIn={false}
+                      showSkeleton={false}
                     />
                   </button>
                 ))}
@@ -148,7 +150,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             </div>
 
             {/* Color Selection */}
-            <div>
+            {/* <div>
               <h3 className="text-lg font-medium text-soft-800 mb-3">
                 Color: {selectedColor.name}
               </h3>
@@ -165,30 +167,9 @@ export default function ProductPage({ params }: ProductPageProps) {
                   />
                 ))}
               </div>
-            </div>
+            </div> */}
 
-            {/* Size Selection */}
-            <div>
-              <h3 className="text-lg font-medium text-soft-800 mb-3">Size</h3>
-              <div className="grid grid-cols-3 gap-2">
-                {product.sizes.map((size) => (
-                  <button
-                    key={size.id}
-                    onClick={() => setSelectedSize(size)}
-                    className={`py-2 px-4 border text-center transition-colors ${
-                      selectedSize?.id === size.id
-                        ? 'border-primary-500 bg-primary-500 text-white'
-                        : 'border-soft-300 hover:border-primary-400 hover:bg-primary-50'
-                    }`}
-                  >
-                    {size.name}
-                  </button>
-                ))}
-              </div>
-              <Link href="/size-guide" className="text-sm text-soft-600 hover:text-primary-600 mt-2 inline-block">
-                Size Guide
-              </Link>
-            </div>
+         
 
             {/* Quantity */}
             <div>
@@ -235,15 +216,6 @@ export default function ProductPage({ params }: ProductPageProps) {
                   <li>• Comfortable fit</li>
                   <li>• Easy care instructions</li>
                   <li>• Ethically sourced</li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="font-medium text-soft-800 mb-2">Shipping & Returns</h4>
-                <ul className="text-sm text-soft-600 space-y-1">
-                  <li>• Free shipping on orders over $150</li>
-                  <li>• 30-day return policy</li>
-                  <li>• Express shipping available</li>
                 </ul>
               </div>
             </div>

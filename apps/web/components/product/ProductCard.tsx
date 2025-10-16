@@ -1,8 +1,6 @@
-'use client';
-
-import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types';
+import { ProductImage } from '@/components/ui/OptimizedImage';
 
 interface ProductCardProps {
   product: Product;
@@ -18,12 +16,14 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="flex flex-col h-full bg-white shadow-lg hover:shadow-2xl transition-all duration-500 rounded-2xl overflow-hidden border-2 border-muted-rose/20 hover:border-muted-rose/50 cursor-pointer transform hover:-translate-y-2">
           {/* Image Container */}
           <div className="relative overflow-hidden bg-gradient-to-br from-warm-pink/30 to-light-blush aspect-[3/4]">
-            <Image
+            <ProductImage
               src={product.images[0]}
               alt={product.name}
               fill
-              className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              className="transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+              aspectRatio="3/4"
+              fadeIn={true}
+              showSkeleton={true}
             />
             {product.new && (
               <div className="absolute top-3 left-3 bg-gradient-to-r from-muted-rose to-deep-mauve text-neutral-white px-4 py-1.5 text-xs font-bold shadow-xl rounded-full animate-pulse-slow border-2 border-white/50">

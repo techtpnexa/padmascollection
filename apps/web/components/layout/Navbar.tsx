@@ -40,7 +40,14 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="block hover:opacity-80 transition-opacity">
-              <Image src="/images/padmas_new_logo.png" alt="Logo" width={170} height={170} />
+              <Image 
+                src="/images/padmas_new_logo.png" 
+                alt="Logo" 
+                width={170} 
+                height={170}
+                priority
+                quality={90}
+              />
             </Link>
           </div>
 
@@ -53,6 +60,12 @@ export function Navbar() {
               >
                 Home
               </button>
+              <Link
+                href="/our-journey"
+                className="text-text-secondary hover:text-muted-rose px-4 py-2 text-sm font-medium transition-all duration-200 hover:bg-light-blush rounded-sm"
+              >
+                Our Journey
+              </Link>
               <button
                 onClick={() => scrollToSection('featured')}
                 className="text-text-secondary hover:text-muted-rose px-4 py-2 text-sm font-medium transition-all duration-200 hover:bg-light-blush rounded-sm"
@@ -79,12 +92,6 @@ export function Navbar() {
             <button className="text-text-secondary hover:text-muted-rose p-3 transition-all duration-200 hover:bg-light-blush rounded-full">
               <User className="h-5 w-5" />
             </button> */}
-            <button className="text-text-secondary hover:text-muted-rose p-3 transition-all duration-200 hover:bg-light-blush rounded-full relative">
-              <ShoppingBag className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 bg-muted-rose text-neutral-white text-xs w-6 h-6 flex items-center justify-center text-[10px] rounded-full border-2 border-neutral-white shadow-md">
-                0
-              </span>
-            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -109,6 +116,13 @@ export function Navbar() {
             >
               Home
             </button>
+            <Link
+              href="/our-journey"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-text-secondary hover:text-muted-rose block px-4 py-3 text-base font-medium hover:bg-neutral-white rounded-sm transition-all duration-200 w-full text-left"
+            >
+              Our Journey
+            </Link>
             <button
               onClick={() => scrollToSection('featured')}
               className="text-text-secondary hover:text-muted-rose block px-4 py-3 text-base font-medium hover:bg-neutral-white rounded-sm transition-all duration-200 w-full text-left"
