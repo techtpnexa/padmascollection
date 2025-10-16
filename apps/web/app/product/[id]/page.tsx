@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { products } from '@/data/products';
 import { Size, Color } from '@/types';
-import { ProductImage, ThumbnailImage } from '@/components/ui/OptimizedImage';
+import { FastProductImage, FastThumbnailImage } from '@/components/ui/FastImage';
 
 interface ProductPageProps {
   params: {
@@ -92,14 +92,13 @@ export default function ProductPage({ params }: ProductPageProps) {
           {/* Product Images */}
           <div className="space-y-4">
             <div className="relative aspect-[4/5] bg-primary-200 border border-primary-500 overflow-hidden shadow-md">
-              <ProductImage
+              <FastProductImage
                 src={product.images[selectedImage]}
                 alt={product.name}
                 fill
                 priority
                 aspectRatio="4/5"
-                fadeIn={true}
-                showSkeleton={false}
+                eager={true}
               />
               {product.new && (
                 <div className="absolute top-4 left-4 bg-primary-600 text-white px-3 py-1 text-sm font-medium">
@@ -119,12 +118,11 @@ export default function ProductPage({ params }: ProductPageProps) {
                       selectedImage === index ? 'border-2 border-primary-600' : 'border-primary-500'
                     }`}
                   >
-                    <ThumbnailImage
+                    <FastThumbnailImage
                       src={image}
                       alt={`${product.name} ${index + 1}`}
                       fill
-                      fadeIn={false}
-                      showSkeleton={false}
+                      eager={false}
                     />
                   </button>
                 ))}

@@ -7,7 +7,7 @@ import { ProductGrid } from '@/components/product/ProductGrid';
 import { products, categories } from '@/data/products';
 import { ArrowDown } from 'lucide-react';
 import TrustedBrands from '@/components/ui/TrustedBrands';
-import { HeroImage, CategoryImage } from '@/components/ui/OptimizedImage';
+import { FastHeroImage, FastImage } from '@/components/ui/FastImage';
 import { useRouter } from 'next/navigation';
 
 
@@ -46,7 +46,7 @@ export default function HomePage() {
       <section id="home" className="relative h-screen flex items-center justify-center bg-gradient-to-br from-soft-pink via-light-blush to-warm-pink overflow-hidden">
         <div className="absolute inset-0">
           {/* 3D Fashion Image - Using a high-quality 3D render of elegant dress */}
-          <HeroImage
+          <FastHeroImage
             src="/images/banner_img.webp"
             alt="Padmas Collection - Elegant Women's Fashion"
             fill
@@ -128,12 +128,14 @@ export default function HomePage() {
                   onClick={() => document.getElementById(category.slug)?.scrollIntoView({ behavior: 'smooth' })}
                   className="group relative overflow-hidden bg-warm-pink aspect-[4/5] border-4 border-muted-rose shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
                 >
-                  <CategoryImage
+                  <FastImage
                     src={categoryImages[index]}
                     alt={category.name}
                     fill
                     className="transition-transform duration-500 group-hover:scale-110"
                     aspectRatio="4/5"
+                    quality={85}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-mauve/80 via-deep-mauve/40 to-transparent group-hover:from-deep-mauve/90 transition-all duration-300" />
                   <div className="absolute bottom-8 left-8 text-white">
