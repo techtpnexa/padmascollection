@@ -34,7 +34,9 @@ jobs:
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: vercel --token=${{ secrets.VERCEL_TOKEN_PC }} --yes
+        run: |
+          echo "🚀 Deploying preview from $(pwd)"
+          vercel --token=${{ secrets.VERCEL_TOKEN_PC }} --yes --scope=${{ secrets.VERCEL_ORG_ID }}
           
       - name: Deploy to Vercel (Production)
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
@@ -43,7 +45,7 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
-          echo "Current directory: $(pwd)"
-          echo "Directory contents:"
+          echo "🚀 Deploying production from $(pwd)"
+          echo "📁 Directory contents:"
           ls -la
-          vercel --prod --token=${{ secrets.VERCEL_TOKEN_PC }} --yes
+          vercel --prod --token=${{ secrets.VERCEL_TOKEN_PC }} --yes --scope=${{ secrets.VERCEL_ORG_ID }}

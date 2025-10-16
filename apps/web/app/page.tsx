@@ -82,13 +82,13 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <button 
               onClick={() => document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-neutral-white text-deep-mauve px-10 py-4 font-semibold text-lg hover:bg-light-blush transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+              className="bg-neutral-white text-deep-mauve px-6 py-4 font-semibold text-lg hover:bg-light-blush transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
             >
               Explore Collection
             </button>
             <button 
               onClick={() => window.location.href = '/our-journey'}
-              className="border-2 border-neutral-white text-neutral-white px-10 py-4 font-semibold text-lg hover:bg-neutral-white hover:text-deep-mauve transition-all duration-300 shadow-xl backdrop-blur-sm"
+              className="border-2 border-neutral-white text-neutral-white px-6 py-4 font-semibold text-lg hover:bg-neutral-white hover:text-deep-mauve transition-all duration-300 shadow-xl backdrop-blur-sm"
             >
               View Our Journey
             </button>
