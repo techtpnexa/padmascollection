@@ -99,7 +99,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 priority
                 aspectRatio="4/5"
                 fadeIn={true}
-                showSkeleton={true}
+                showSkeleton={false}
               />
               {product.new && (
                 <div className="absolute top-4 left-4 bg-primary-600 text-white px-3 py-1 text-sm font-medium">

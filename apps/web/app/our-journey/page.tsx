@@ -57,7 +57,7 @@ export default function OurJourneyPage() {
               <div className="relative bg-white/40 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/60 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)] transition-all duration-500">
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/founder.jpeg"
+                    src="/images/founder.webp"
                     alt="Bharat and Padma Pardeshi - Founders of Padma's Collection"
                     fill
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"

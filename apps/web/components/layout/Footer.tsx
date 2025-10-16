@@ -15,7 +15,7 @@ export function Footer() {
             <div>
               <div className="mb-0">
                 <Image 
-                  src="/images/padmas_new_logo.png" 
+                  src="/images/padmas_new_logo.webp" 
                   alt="Padma's Collection Logo" 
                   width={250} 
                   height={250}

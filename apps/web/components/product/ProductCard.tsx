@@ -23,7 +23,7 @@ export function ProductCard({ product }: ProductCardProps) {
               className="transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
               aspectRatio="3/4"
               fadeIn={true}
-              showSkeleton={true}
+              showSkeleton={false}
             />
             {product.new && (
               <div className="absolute top-3 left-3 bg-gradient-to-r from-muted-rose to-deep-mauve text-neutral-white px-4 py-1.5 text-xs font-bold shadow-xl rounded-full animate-pulse-slow border-2 border-white/50">

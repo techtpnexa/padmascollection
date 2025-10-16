@@ -32,7 +32,7 @@ export const products: Product[] = [
     id: '1',
     name: 'Graceful gowns for every special moment',
     images: [
-      '/images/gowns/5.jpeg',
+      '/images/gowns/5.webp',
     ],
     description: 'A soft and comfortable floor-length night gown, designed for relaxed evenings with graceful draping and a flattering fit.',
     category: categories[0],
@@ -46,7 +46,7 @@ export const products: Product[] = [
     id: '2',
     name: 'Elegance and comfort in every stitch',
     images: [
-      '/images/gowns/4.jpeg',
+      '/images/gowns/4.webp',
     ],
     description: 'A soft and comfortable floor-length night gown, designed for relaxed evenings with graceful draping and a flattering fit..',
     category: categories[0],
@@ -60,7 +60,7 @@ export const products: Product[] = [
     id: '3',
     name: 'Step out in style and confidence',
     images: [
-      '/images/gowns/3.jpeg',
+      '/images/gowns/3.webp',
     ],
       description: 'A stunning floor-length evening gown perfect for special occasions. Features elegant draping and a flattering silhouette.',
       category: categories[0],
@@ -74,7 +74,7 @@ export const products: Product[] = [
     id: '4',
     name: 'Where elegance meets everyday grace',
     images: [
-      '/images/gowns/2.jpeg',
+      '/images/gowns/2.webp',
     ],
     description: 'A soft and comfortable floor-length night gown, designed for relaxed evenings with graceful draping and a flattering fit.',
     category: categories[0],
@@ -88,7 +88,7 @@ export const products: Product[] = [
     id: '5',
     name: 'Timeless gowns for every occasion.',
     images: [
-      '/images/gowns/1.jpeg',
+      '/images/gowns/1.webp',
     ],
     description: 'A soft and comfortable floor-length night gown, designed for relaxed evenings with graceful draping and a flattering fit.',
     category: categories[0],
@@ -103,7 +103,7 @@ export const products: Product[] = [
     id: '6',
     name: 'Relax in style and comfort',
     images: [
-      '/images/corset/1.png',
+      '/images/corset/1.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -117,7 +117,7 @@ export const products: Product[] = [
     id: '7',
     name: 'Comfort that feels like a warm hug',
     images: [
-      '/images/corset/2.png',
+      '/images/corset/2.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -131,7 +131,7 @@ export const products: Product[] = [
     id: '8',
     name: 'Sleep beautifully, unwind in style',
     images: [
-      '/images/corset/3.png',
+      '/images/corset/3.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -145,7 +145,7 @@ export const products: Product[] = [
     id: '9',
     name: 'Soft fabrics for peaceful evenings.',
     images: [
-      '/images/corset/4.png',
+      '/images/corset/4.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -159,7 +159,7 @@ export const products: Product[] = [
     id: '10',
     name: 'Every night, wrapped in comfort.',
     images: [
-      '/images/corset/5.png',
+      '/images/corset/5.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -173,7 +173,7 @@ export const products: Product[] = [
     id: '11',
     name: 'Chic designs for relaxing moments',
     images: [
-      '/images/corset/6.png',
+      '/images/corset/6.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -187,7 +187,7 @@ export const products: Product[] = [
     id: '12',
     name: 'Where style meets cozy comfort.',
     images: [
-      '/images/corset/7.png',
+      '/images/corset/7.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -201,7 +201,7 @@ export const products: Product[] = [
     id: '13',
     name: 'Flawless fit, effortless style',
     images: [
-        '/images/corset/8.png',
+        '/images/corset/8.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -215,7 +215,7 @@ export const products: Product[] = [
     id: '14',
     name: 'Graceful designs for every shape',
     images: [
-      '/images/corset/9.png',
+      '/images/corset/9.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -229,7 +229,7 @@ export const products: Product[] = [
     id: '15',
     name: 'Comfortable pieces, designed to flatter',
     images: [
-      '/images/corset/10.png',
+      '/images/corset/10.webp',
     ],
     description: 'Soft, elegant, and comfortable, this night suit combines a flattering silhouette with gentle draping for cozy nights.',
     category: categories[1],
@@ -244,7 +244,7 @@ export const products: Product[] = [
   //   id: '16',
   //   name: 'Confidence begins beneath',
   //   images: [
-  //       '/images/lingerie/1.jpeg',
+  //       '/images/lingerie/1.webp',
   //   ],
   //   description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
   //   category: categories[2],
@@ -258,7 +258,7 @@ export const products: Product[] = [
     id: '17',
     name: 'Beautiful lingerie for everyday elegance',
     images: [
-        '/images/lingerie/2.jpeg',
+        '/images/lingerie/2.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],
@@ -272,7 +272,7 @@ export const products: Product[] = [
   //   id: '18',
   //   name: 'Feel empowered, comfortable, and graceful',
   //   images: [
-  //       '/images/lingerie/3.jpeg',
+  //       '/images/lingerie/3.webp',
   //   ],
   //   description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
   //   category: categories[2],
@@ -286,7 +286,7 @@ export const products: Product[] = [
     id: '19',
     name: 'Luxury and comfort, handpicked for you',
     images: [
-        '/images/lingerie/4.png',
+        '/images/lingerie/4.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],
@@ -300,7 +300,7 @@ export const products: Product[] = [
     id: '23',
     name: 'Redefining comfort with every stitch',
     images: [
-        '/images/lingerie/8.jpeg',
+        '/images/lingerie/8.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],
@@ -314,7 +314,7 @@ export const products: Product[] = [
     id: '20',
     name: 'Look beautiful, feel confident.',
     images: [
-        '/images/lingerie/5.jpeg',
+        '/images/lingerie/5.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],
@@ -328,7 +328,7 @@ export const products: Product[] = [
     id: '21',
     name: 'Chic designs for every moment',
     images: [
-        '/images/lingerie/6.jpeg',
+        '/images/lingerie/6.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],
@@ -342,7 +342,7 @@ export const products: Product[] = [
     id: '22',
     name: 'Everyday comfort with a touch of style',
     images: [
-        '/images/lingerie/7.jpeg',
+        '/images/lingerie/7.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],
@@ -357,7 +357,7 @@ export const products: Product[] = [
     id: '24',
     name: 'Where style meets softness',
     images: [
-        '/images/lingerie/9.jpeg',
+        '/images/lingerie/9.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],
@@ -371,7 +371,7 @@ export const products: Product[] = [
     id: '25',
     name: 'Confidence, comfort, and a little luxury.',
     images: [
-        '/images/lingerie/10.jpeg',
+        '/images/lingerie/10.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],
@@ -385,7 +385,7 @@ export const products: Product[] = [
     id: '26',
     name: 'Intimate wear that celebrates you',
     images: [
-        '/images/lingerie/11.jpeg',
+        '/images/lingerie/11.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],
@@ -399,7 +399,7 @@ export const products: Product[] = [
     id: '27',
     name: 'Because feeling good starts from within.',
     images: [
-        '/images/lingerie/12.jpeg',
+        '/images/lingerie/12.webp',
     ],
     description: 'Soft, stylish, and comfortable, this lingerie is designed to enhance your confidence and celebrate your femininity. Crafted for a flattering fit, it combines elegance and everyday ease.',
     category: categories[2],

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: 'Discover elegant gowns, luxurious lingerie, and premium women\'s fashion at Padmas Collection. Shop the latest trends in sophisticated style.',
   keywords: 'women fashion, gowns, lingerie, dresses, premium clothing, elegant wear',
   icons: {
-    icon: '/images/Padma_logo.png',
+    icon: '/images/Padma_logo.webp',
   },
 };
 

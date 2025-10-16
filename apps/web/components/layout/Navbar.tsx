@@ -41,7 +41,7 @@ export function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="block hover:opacity-80 transition-opacity">
               <Image 
-                src="/images/padmas_new_logo.png" 
+                src="/images/padmas_new_logo.webp" 
                 alt="Logo" 
                 width={170} 
                 height={170}

@@ -66,7 +66,7 @@ export function OptimizedImage({
   onError,
   eager = false,
   fadeIn = true,
-  showSkeleton = true,
+  showSkeleton = false,
   aspectRatio,
   objectFit = 'cover',
 }: OptimizedImageProps) {
@@ -231,7 +231,7 @@ export const ProductImage = (props: Omit<OptimizedImageProps, 'quality' | 'sizes
     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
     placeholder="blur"
     fadeIn={true}
-    showSkeleton={true}
+    showSkeleton={false}
     {...props}
   />
 );
@@ -254,7 +254,7 @@ export const HeroImage = (props: Omit<OptimizedImageProps, 'quality' | 'sizes' |
     priority={true}
     placeholder="blur"
     fadeIn={true}
-    showSkeleton={true}
+    showSkeleton={false}
     {...props}
   />
 );
@@ -265,7 +265,7 @@ export const CategoryImage = (props: Omit<OptimizedImageProps, 'quality' | 'size
     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     placeholder="blur"
     fadeIn={true}
-    showSkeleton={true}
+    showSkeleton={false}
     {...props}
   />
 );

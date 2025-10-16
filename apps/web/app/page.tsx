@@ -31,9 +31,9 @@ export default function HomePage() {
   
   // Group products by category - with safety checks
   const categoryImages = [
-    '/images/gowns/1.jpeg',
-    '/images/corset/1.png',
-    '/images/lingerie/3.jpeg',
+    '/images/gowns/1.webp',
+    '/images/corset/1.webp',
+    '/images/lingerie/3.webp',
   ];
   const productsByCategory = categories.map(category => ({
     category,
@@ -47,7 +47,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           {/* 3D Fashion Image - Using a high-quality 3D render of elegant dress */}
           <HeroImage
-            src="/images/banner_img.jpg"
+            src="/images/banner_img.webp"
             alt="Padmas Collection - Elegant Women's Fashion"
             fill
             className="object-cover"
