@@ -138,7 +138,7 @@ export function Navbar() {
                 {category.name}
               </button>
             ))}
-            <div className="flex items-center justify-center space-x-4 px-3 py-4 border-t border-muted-rose mt-2">
+            {/* <div className="flex items-center justify-center space-x-4 px-3 py-4 border-t border-muted-rose mt-2">
               <button className="text-text-secondary hover:text-muted-rose p-3 hover:bg-neutral-white rounded-full transition-all duration-200">
                 <Search className="h-5 w-5" />
               </button>
@@ -151,7 +151,7 @@ export function Navbar() {
                   0
                 </span>
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

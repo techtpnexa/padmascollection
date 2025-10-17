@@ -2,7 +2,7 @@
 
 import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import styles from './ProductGrid.module.css';
 
 interface ProductGridProps {
@@ -17,12 +17,22 @@ export function ProductGrid({ products, title, className = '' }: ProductGridProp
   const [isAnimating, setIsAnimating] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  
+  // Touch/Swipe state
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const itemsPerPage = isMobile ? 1 : 4;
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = Math.min(startIndex + itemsPerPage, products.length);
   const displayedProducts = products.slice(startIndex, endIndex);
+
+  // Swipe detection constants
+  const minSwipeDistance = 50;
 
   useEffect(() => {
     // Check if mobile
@@ -99,6 +109,92 @@ export function ProductGrid({ products, title, className = '' }: ProductGridProp
     }
   };
 
+  // Touch/Swipe handlers
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (!isMobile) return;
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+    setIsDragging(true);
+  }, [isMobile]);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isMobile || !isDragging || touchStart === null) return;
+    
+    const currentTouch = e.targetTouches[0].clientX;
+    const diff = touchStart - currentTouch;
+    
+    // Limit drag offset to prevent over-scrolling
+    const maxOffset = 100;
+    const limitedOffset = Math.max(-maxOffset, Math.min(maxOffset, diff));
+    setDragOffset(limitedOffset);
+    setTouchEnd(currentTouch);
+  }, [isMobile, isDragging, touchStart]);
+
+  const handleTouchEnd = useCallback(() => {
+    if (!isMobile || !touchStart || !touchEnd) {
+      setIsDragging(false);
+      setDragOffset(0);
+      return;
+    }
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentPage < totalPages - 1) {
+      handleNext();
+    } else if (isRightSwipe && currentPage > 0) {
+      handlePrev();
+    }
+
+    // Reset states
+    setIsDragging(false);
+    setDragOffset(0);
+    setTouchStart(null);
+    setTouchEnd(null);
+  }, [isMobile, touchStart, touchEnd, minSwipeDistance, currentPage, totalPages]);
+
+  // Mouse handlers for desktop drag (optional)
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (isMobile) return;
+    setTouchEnd(null);
+    setTouchStart(e.clientX);
+    setIsDragging(true);
+  }, [isMobile]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (isMobile || !isDragging || touchStart === null) return;
+    
+    const diff = touchStart - e.clientX;
+    const maxOffset = 50;
+    const limitedOffset = Math.max(-maxOffset, Math.min(maxOffset, diff));
+    setDragOffset(limitedOffset);
+    setTouchEnd(e.clientX);
+  }, [isMobile, isDragging, touchStart]);
+
+  const handleMouseUp = useCallback(() => {
+    if (isMobile || !touchStart || !touchEnd) {
+      setIsDragging(false);
+      setDragOffset(0);
+      return;
+    }
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentPage < totalPages - 1) {
+      handleNext();
+    } else if (isRightSwipe && currentPage > 0) {
+      handlePrev();
+    }
+
+    setIsDragging(false);
+    setDragOffset(0);
+    setTouchStart(null);
+    setTouchEnd(null);
+  }, [isMobile, touchStart, touchEnd, minSwipeDistance, currentPage, totalPages]);
+
   if (products.length === 0) {
     return (
       <div className={`text-center py-12 ${className}`}>
@@ -167,9 +263,28 @@ export function ProductGrid({ products, title, className = '' }: ProductGridProp
 
         {/* Product Grid */}
         <div 
-          ref={gridRef}
-          className={styles.premiumGalleryGrid}
+          ref={containerRef}
+          className={`relative overflow-hidden ${styles.swipeContainer} ${isDragging ? styles.dragging : ''}`}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          style={{
+            cursor: isDragging ? 'grabbing' : 'grab',
+            userSelect: 'none',
+          }}
         >
+          <div 
+            ref={gridRef}
+            className={styles.premiumGalleryGrid}
+            style={{
+              transform: `translateX(${-dragOffset}px)`,
+              transition: isDragging ? 'none' : 'transform 0.3s ease-out',
+            }}
+          >
           {displayedProducts.map((product, index) => (
             <div
               key={product.id}
@@ -181,8 +296,26 @@ export function ProductGrid({ products, title, className = '' }: ProductGridProp
               <ProductCard product={product} />
             </div>
           ))}
+          </div>
         </div>
       </div>
+
+      {/* Mobile Swipe Indicator */}
+      {isMobile && totalPages > 1 && (
+        <div className="flex items-center justify-center mt-8 mb-4">
+          <div className="bg-gradient-to-r from-muted-rose/20 to-deep-mauve/20 px-4 py-2 rounded-full border border-muted-rose/30">
+            <div className="flex items-center gap-2 text-sm text-deep-mauve">
+              <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+              </svg>
+              <span className="font-medium">Swipe to browse</span>
+              <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Pagination Dots */}
       {totalPages > 1 && (

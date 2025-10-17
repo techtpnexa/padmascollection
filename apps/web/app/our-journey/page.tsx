@@ -115,7 +115,7 @@ export default function OurJourneyPage() {
                   </div>
                   
                   <p className="text-lg md:text-xl text-text-secondary leading-relaxed font-light">
-                    We are truly grateful to our loyal customers, whose continued support has made this journey possible and inspires us every day to keep bringing joy and style to every woman.
+                  We owe our journey to you — our <strong> loyal customers </strong>  . Your trust and support inspire us to keep innovating, creating, and spreading joy through every collection.<br /> With Padma’s Collection, fashion isn’t just what you wear — it’s how you feel.
                   </p>
                 </div>
               </div>

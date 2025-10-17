@@ -84,7 +84,7 @@ export function Footer() {
                     <Clock className="h-5 w-5 text-muted-rose mt-1" />
                   </div>
                   <div>
-                    <h5 className="text-primary-100 font-semibold mb-1 text-sm">Store Hours</h5>
+                    <h5 className="text-primary-100 font-semibold mb-1 text-sm">Working Hours</h5>
                     <p className="text-primary-200 text-sm opacity-90">
                       11:00 AM – 9:30 PM
                     </p>
@@ -124,7 +124,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-accent-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-primary-200 text-sm opacity-80 text-center md:text-left">
-          © 2025 Padma's Collection. All rights reserved. Crafted with ❤️ by Pramod and Tushar.
+          © 2025 Padma’s Collection. All rights reserved. By visiting our website, you agree to our <Link href="/privacy-policy" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">Terms & Conditions</Link> & <Link href="/privacy-policy" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">Privacy Policy</Link>. Crafted with ❤️ by Pramod and Tushar.
           </p>
           {/* <div className="flex flex-wrap justify-center md:justify-end gap-6">
             <Link href="/privacy" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">

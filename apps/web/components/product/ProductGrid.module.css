@@ -201,3 +201,72 @@
   animation: shimmer 2s infinite;
 }
 
+/* Swipe Container Styles */
+.swipeContainer {
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile-specific enhancements */
+@media (max-width: 640px) {
+  .premiumGalleryGrid {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .productCardWrapper {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  /* Reduce hover effects on mobile for better performance */
+  .productCardWrapper:hover {
+    transform: none;
+  }
+  
+  .productCardWrapper::before {
+    display: none;
+  }
+}
+
+/* Swipe feedback animation */
+@keyframes swipeHint {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 0.7;
+  }
+}
+
+.swipeHint {
+  animation: swipeHint 2s ease-in-out infinite;
+}
+
+/* Dragging state styles */
+.dragging {
+  transition: none !important;
+}
+
+.dragging .productCardWrapper {
+  pointer-events: none;
+}
+
+/* Enhanced pagination for mobile */
+@media (max-width: 640px) {
+  .paginationDot {
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+  }
+  
+  .paginationDot.active {
+    width: 40px;
+    height: 16px;
+  }
+}
+
