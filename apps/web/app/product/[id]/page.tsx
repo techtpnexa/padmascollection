@@ -23,8 +23,6 @@ export default function ProductPage({ params }: ProductPageProps) {
   }
 
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedSize, setSelectedSize] = useState<Size | null>(null);
-  const [selectedColor, setSelectedColor] = useState<Color>(product.colors[0]);
   const [quantity, setQuantity] = useState(1);
 
   const relatedProducts = products
@@ -32,9 +30,8 @@ export default function ProductPage({ params }: ProductPageProps) {
     .slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-primary-100">
+    <div className="bg-primary-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Coming Soon Banner */}
         <div className="mb-8 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-deep-mauve/10 via-muted-rose/10 to-deep-mauve/10 blur-xl" />
           <div className="relative bg-gradient-to-r from-deep-mauve to-muted-rose rounded-xl p-6 md:p-8 shadow-2xl border-2 border-white/30">

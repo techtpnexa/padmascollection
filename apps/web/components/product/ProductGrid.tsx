@@ -112,22 +112,34 @@ export function ProductGrid({ products, title, className = '' }: ProductGridProp
   // Touch/Swipe handlers
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     if (!isMobile) return;
+    
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
-    setIsDragging(true);
+    setIsDragging(false); // Reset dragging state
+    // Don't set dragging immediately - wait for actual movement
   }, [isMobile]);
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    if (!isMobile || !isDragging || touchStart === null) return;
+    if (!isMobile || touchStart === null) return;
     
     const currentTouch = e.targetTouches[0].clientX;
     const diff = touchStart - currentTouch;
     
-    // Limit drag offset to prevent over-scrolling
-    const maxOffset = 100;
-    const limitedOffset = Math.max(-maxOffset, Math.min(maxOffset, diff));
-    setDragOffset(limitedOffset);
-    setTouchEnd(currentTouch);
+    // Only start dragging if movement is significant (prevents accidental drags)
+    if (Math.abs(diff) > 5) {
+      if (!isDragging) {
+        setIsDragging(true);
+      }
+      
+      // Prevent scrolling when dragging
+      e.preventDefault();
+      
+      // Limit drag offset to prevent over-scrolling
+      const maxOffset = 100;
+      const limitedOffset = Math.max(-maxOffset, Math.min(maxOffset, diff));
+      setDragOffset(limitedOffset);
+      setTouchEnd(currentTouch);
+    }
   }, [isMobile, isDragging, touchStart]);
 
   const handleTouchEnd = useCallback(() => {
@@ -154,46 +166,7 @@ export function ProductGrid({ products, title, className = '' }: ProductGridProp
     setTouchEnd(null);
   }, [isMobile, touchStart, touchEnd, minSwipeDistance, currentPage, totalPages]);
 
-  // Mouse handlers for desktop drag (optional)
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    if (isMobile) return;
-    setTouchEnd(null);
-    setTouchStart(e.clientX);
-    setIsDragging(true);
-  }, [isMobile]);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (isMobile || !isDragging || touchStart === null) return;
-    
-    const diff = touchStart - e.clientX;
-    const maxOffset = 50;
-    const limitedOffset = Math.max(-maxOffset, Math.min(maxOffset, diff));
-    setDragOffset(limitedOffset);
-    setTouchEnd(e.clientX);
-  }, [isMobile, isDragging, touchStart]);
-
-  const handleMouseUp = useCallback(() => {
-    if (isMobile || !touchStart || !touchEnd) {
-      setIsDragging(false);
-      setDragOffset(0);
-      return;
-    }
-
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe && currentPage < totalPages - 1) {
-      handleNext();
-    } else if (isRightSwipe && currentPage > 0) {
-      handlePrev();
-    }
-
-    setIsDragging(false);
-    setDragOffset(0);
-    setTouchStart(null);
-    setTouchEnd(null);
-  }, [isMobile, touchStart, touchEnd, minSwipeDistance, currentPage, totalPages]);
+  // Mouse handlers removed - desktop uses navigation buttons only
 
   if (products.length === 0) {
     return (
@@ -265,18 +238,27 @@ export function ProductGrid({ products, title, className = '' }: ProductGridProp
         <div 
           ref={containerRef}
           className={`relative overflow-hidden ${styles.swipeContainer} ${isDragging ? styles.dragging : ''}`}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
+          {...(isMobile && {
+            onTouchStart: handleTouchStart,
+            onTouchMove: handleTouchMove,
+            onTouchEnd: handleTouchEnd,
+          })}
           style={{
-            cursor: isDragging ? 'grabbing' : 'grab',
-            userSelect: 'none',
+            cursor: isDragging ? 'grabbing' : 'default',
+            userSelect: isDragging ? 'none' : 'auto',
           }}
         >
+          {/* Drag hint areas for mobile - only show when there are multiple pages */}
+          {isMobile && totalPages > 1 && (
+            <>
+              <div className="absolute left-0 top-0 w-12 h-full z-20 flex items-center justify-center bg-gradient-to-r from-black/5 to-transparent pointer-events-none">
+                <div className="w-1 h-8 bg-muted-rose/30 rounded-full"></div>
+              </div>
+              <div className="absolute right-0 top-0 w-12 h-full z-20 flex items-center justify-center bg-gradient-to-l from-black/5 to-transparent pointer-events-none">
+                <div className="w-1 h-8 bg-muted-rose/30 rounded-full"></div>
+              </div>
+            </>
+          )}
           <div 
             ref={gridRef}
             className={styles.premiumGalleryGrid}

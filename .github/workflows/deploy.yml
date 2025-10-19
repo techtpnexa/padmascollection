@@ -13,6 +13,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: Configure git user and amend latest commit
+        run: |
+          git config --global user.name "techtpnexa"
+          git config --global user.email "tech.tpnexa@gmail.com"
+          git commit --amend --author="techtpnexa <tech.tpnexa@gmail.com>" --no-edit
         
       - name: Setup Node.js
         uses: actions/setup-node@v4
