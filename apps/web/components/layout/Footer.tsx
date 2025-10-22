@@ -122,21 +122,27 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-accent-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-200 text-sm opacity-80 text-center md:text-left">
-          © 2025 Padma’s Collection. All rights reserved. By visiting our website, you agree to our <Link href="/privacy-policy" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">Terms & Conditions</Link> & <Link href="/privacy-policy" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">Privacy Policy</Link>. Crafted with ❤️ by Pramod and Tushar.
-          </p>
-          {/* <div className="flex flex-wrap justify-center md:justify-end gap-6">
-            <Link href="/privacy" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">
-              Terms of Service
-            </Link>
-            <Link href="/our-journey" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">
-              About Us
-            </Link>
-          </div> */}
+        <div className="border-t border-accent-800 pt-8 space-y-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-primary-200 text-sm opacity-80 text-center md:text-left">
+            © 2025 Padma's Collection. All rights reserved. By visiting our website, you agree to our <Link href="/privacy-policy" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">Terms & Conditions</Link> & <Link href="/privacy-policy" className="text-primary-200 hover:text-muted-rose text-sm transition-colors opacity-80 hover:opacity-100">Privacy Policy</Link>. Crafted with ❤️ by Pramod and Tushar.
+            </p>
+          </div>
+          
+          {/* Developer Credit */}
+          <div className="text-center border-t border-accent-800/50 pt-4">
+            <p className="text-primary-300 text-sm">
+              Developed by{' '}
+              <a 
+                href="https://tpnexa.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-rose hover:text-primary-100 font-semibold transition-colors duration-200"
+              >
+                tpnexa.com
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
