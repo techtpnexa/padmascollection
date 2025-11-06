@@ -75,8 +75,8 @@ export default function HomePage() {
           </h1>
           
           <p className="text-xl md:text-2xl mb-10 font-light max-w-2xl mx-auto drop-shadow-lg">
-            Discover our curated collection of exquisite gowns, lingerie, and fashion pieces
-            that celebrate your unique beauty.
+            Welcome to Padmas Collection - Discover our curated collection of exquisite gowns, lingerie, and fashion pieces
+            that celebrate your unique beauty. Serving Nashik, Deolali Camp, and Nashik Road since 2000.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
