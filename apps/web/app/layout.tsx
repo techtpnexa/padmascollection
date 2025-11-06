@@ -45,6 +45,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://padmascollection.com',
   },
+  verification: {
+    google: 'oZVwmZGJFx7Cf7a4Ll6jqGyX7XHglD18OrHqr6edrVk',
+  },
 };
 
 export default function RootLayout({
